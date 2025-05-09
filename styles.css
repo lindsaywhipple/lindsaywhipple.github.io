@@ -661,6 +661,9 @@ a:visited {
     color: #5a4a42;
     text-decoration: none;
 }
+.link-card a.home-link-button:visited {
+    color: white !important;
+  }
 
 /* Footer */
 footer {
