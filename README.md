@@ -1,2 +1,1 @@
-# lindsaywhipple.github.io
-Data Analytics Portfolio 
+# Lindsay Whipple's Data Analytics Portfolio

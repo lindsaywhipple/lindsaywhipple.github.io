@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skills - Lindsay Whipple</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <h1 class="site-title"><a href="index.html">Lindsay Whipple</a></h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Skills</h2>
+
+    <div class="skills-toggle">
+      <button id="languagesBtn" class="active">Languages</button>
+      <button id="techniquesBtn">Techniques</button>
+    </div>
+
+    <div id="languages" class="skills-category active">
+      <div class="skills-wrapper">
+        <div class="skill-item python-toggle"><i class="fab fa-python"></i> Python</div>
+        <div class="skill-item"><i class="fas fa-database"></i> SQL</div>
+        <div class="skill-item r-toggle"><i class="fab fa-r-project"></i> R</div>
+        <div class="skill-item"><i class="fas fa-chart-bar"></i> Tableau</div>
+        <div class="skill-item"><i class="fas fa-chart-pie"></i> Power BI</div>
+        <div class="skill-item"><i class="fas fa-file-excel"></i> Excel</div>
+      </div>
+    
+      <!-- Python projects section (initially hidden) -->
+      <div class="r-projects hidden python-projects">
+        <div class="r-project-card">
+          <a href="https://github.com/lindsaywhipple/FitnessTracker/tree/main" target="_blank">
+            <img src="images/lift.jpg" alt="Lifting Tracker" />
+            <div class="r-overlay">
+              <h4>Lifting Tracker - 2025</h4>
+              <p>Created a program in Python that allows users to track their lifts.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    
+      <!-- R projects section (initially hidden) -->
+      <div class="r-projects hidden">
+        <div class="r-project-card">
+          <a href="https://rpubs.com/LindsayWhipple/dcathletescouting" target="_blank">
+            <img src="images/scouting.jpg" alt="Fantasy Athlete Scouting" />
+            <div class="r-overlay">
+              <h4>Fantasy Athlete Scouting - 2023</h4>
+              <p>Used R to analyze athlete data to draft a fantasy team based on data.</p>
+            </div>
+          </a>
+        </div>
+        <div class="r-project-card">
+          <a href="https://rpubs.com/LindsayWhipple/1079783" target="_blank">
+            <img src="images/bellabeat.jpg" alt="Bellabeat Case Study" />
+            <div class="r-overlay">
+              <h4>Bellabeat Case Study - 2023</h4>
+              <p>Exploratory analysis of smart device data using R.</p>
+            </div>
+          </a>
+        </div>
+        <div class="r-project-card">
+          <a href="https://lindsaywhipple.shinyapps.io/PSA-Rankings/" target="_blank">
+            <img src="images/psa.jpg" alt="PSA Shiny App" />
+            <div class="r-overlay">
+              <h4>PSA Shiny App - 2021</h4>
+              <p>Interactive dashboard built in R to analyze squash rankings.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Techniques section -->
+    <div id="techniques" class="skills-category">
+      <div class="skills-wrapper">
+        <div class="skill-item"><i class="fas fa-vial"></i> A/B Testing</div>
+        <div class="skill-item"><i class="fas fa-broom"></i> Data Cleaning</div>
+        <div class="skill-item"><i class="fas fa-chart-line"></i> Visualization</div>
+        <div class="skill-item"><i class="fas fa-square-root-alt"></i> Statistical Modeling</div>
+      </div>
+    </div>
+    
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Lindsay Whipple. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Toggle buttons and sections
+    const languagesBtn = document.getElementById('languagesBtn');
+    const techniquesBtn = document.getElementById('techniquesBtn');
+    const languagesSection = document.getElementById('languages');
+    const techniquesSection = document.getElementById('techniques');
+  
+    // Toggleable project sections
+    const pythonToggle = document.querySelector('.python-toggle');
+    const pythonProjects = document.querySelector('.python-projects');
+    const rToggle = document.querySelector('.r-toggle');
+    const rProjects = document.querySelectorAll('.r-projects')[1]; // 2nd one is for R
+  
+    // Handle tab switching
+    function switchTab(activeBtn, inactiveBtn, showSection, hideSection) {
+      activeBtn.classList.add('active');
+      inactiveBtn.classList.remove('active');
+      showSection.classList.add('active');
+      hideSection.classList.remove('active');
+  
+      // Hide Python and R projects when switching tabs
+      pythonProjects.classList.add('hidden');
+      rProjects.classList.add('hidden');
+      pythonToggle.classList.remove('open');
+      rToggle.classList.remove('open');
+    }
+  
+    languagesBtn.addEventListener('click', () => {
+      switchTab(languagesBtn, techniquesBtn, languagesSection, techniquesSection);
+    });
+  
+    techniquesBtn.addEventListener('click', () => {
+      switchTab(techniquesBtn, languagesBtn, techniquesSection, languagesSection);
+    });
+  
+    // Python toggle logic
+    pythonToggle.addEventListener('click', () => {
+      const isHidden = pythonProjects.classList.contains('hidden');
+      pythonProjects.classList.toggle('hidden');
+      pythonToggle.classList.toggle('open');
+  
+      // Hide R if Python is opening
+      if (isHidden) {
+        rProjects.classList.add('hidden');
+        rToggle.classList.remove('open');
+      }
+    });
+  
+    // R toggle logic
+    rToggle.addEventListener('click', () => {
+      const isHidden = rProjects.classList.contains('hidden');
+      rProjects.classList.toggle('hidden');
+      rToggle.classList.toggle('open');
+  
+      // Hide Python if R is opening
+      if (isHidden) {
+        pythonProjects.classList.add('hidden');
+        pythonToggle.classList.remove('open');
+      }
+    });
+  </script>
+
+</body>
+</html>
