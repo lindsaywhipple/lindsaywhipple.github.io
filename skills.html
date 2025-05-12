@@ -33,23 +33,36 @@
     <div id="languages" class="skills-category active">
       <div class="skills-wrapper">
         <div class="skill-item python-toggle"><i class="fab fa-python"></i> Python</div>
-        <div class="skill-item"><i class="fas fa-database"></i> SQL</div>
+        <div class="skill-item sql-toggle"><i class="fas fa-database"></i> SQL</div>
         <div class="skill-item r-toggle"><i class="fab fa-r-project"></i> R</div>
-        <div class="skill-item"><i class="fas fa-chart-bar"></i> Tableau</div>
-        <div class="skill-item"><i class="fas fa-chart-pie"></i> Power BI</div>
-        <div class="skill-item"><i class="fas fa-file-excel"></i> Excel</div>
-        <div class="skill-item"><i class="fab fa-html5"></i> HTML</div>
-        <div class="skill-item"><i class="fab fa-css3-alt"></i> CSS</div>
+        <div class="skill-item tableau-toggle"><i class="fas fa-chart-bar"></i> Tableau</div>
+        <div class="skill-item powerbi-toggle"><i class="fas fa-chart-pie"></i> Power BI</div>
+        <div class="skill-item excel-toggle"><i class="fas fa-file-excel"></i> Excel</div>
+        <div class="skill-item html-toggle"><i class="fab fa-html5"></i> HTML</div>
+        <div class="skill-item css-toggle"><i class="fab fa-css3-alt"></i> CSS</div>
       </div>
     
       <!-- Python projects section (initially hidden) -->
-      <div class="r-projects hidden python-projects">
-        <div class="r-project-card">
+      <div class="python-projects hidden">
+        <div class="python-project-card">
           <a href="https://github.com/lindsaywhipple/FitnessTracker/tree/main" target="_blank">
             <img src="images/lift.jpg" alt="Lifting Tracker" />
-            <div class="r-overlay">
+            <div class="python-overlay">
               <h4>Lifting Tracker - 2025</h4>
               <p>Created a program in Python that allows users to track their lifts.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+            <!-- SQL projects section (initially hidden) -->
+      <div class="sql-projects hidden">
+        <div class="sql-project-card">
+          <a href="https://github.com/lindsaywhipple/FitnessTracker/tree/main" target="_blank">
+            <img src="images/lift.jpg" alt="Coming Soon" />
+            <div class="sql-overlay">
+              <h4>SQL</h4>
+              <p>SQL experience coming soon!</p>
             </div>
           </a>
         </div>
@@ -87,31 +100,74 @@
       </div>
     </div>
 
-      <!-- HTML projects section (initially hidden) -->
-      <div class="html-projects hidden html-projects">
-        <div class="html-project-card">
+      <!-- Tableau projects section (initially hidden) -->
+      <div class="tableau-projects hidden">
+        <div class="tableau-project-card">
           <a href="https://github.com/lindsaywhipple/FitnessTracker/tree/main" target="_blank">
-            <img src="images/lift.jpg" alt="Data Analytics Portfolio" />
-            <div class="html-overlay">
-              <h4>Data Analytics Portfolio - 2025</h4>
-              <p>View the HTML code I created for this project!</p>
+            <img src="images/project2.jpg" alt="Tableau" />
+            <div class="tableau-overlay">
+              <h4>Coming Soon!</h4>
+              <p>Tableau experience coming soon!</p>
             </div>
           </a>
         </div>
       </div>
 
-      <!-- CSS projects section (initially hidden) -->
-      <div class="css-projects hidden css-projects">
-        <div class="css-project-card">
-          <a href="https://github.com/lindsaywhipple/FitnessTracker/tree/main" target="_blank">
-            <img src="images/lift.jpg" alt="Data Analytics Portfolio" />
-            <div class="css-overlay">
-              <h4>Data Analytics Portfolio - 2025</h4>
-              <p>View the CSS code I created to style this project!</p>
+
+      <!-- Power BI projects Section -->
+      <div class = "powerbi-projects hidden">
+        <div class = "powerbi-project-card">
+          <a href = "https://github.com/lindsaywhipple/lindsaywhipple.github.io" target = "_blank">
+            <img src = "images/project5.jpg" alt = "Power BI" />
+            <div class = "powerbi-overlay">
+              <h4> Coming Soon!</h4>
+              <p> Power BI experience coming soon!</p>
             </div>
           </a>
         </div>
       </div>
+
+
+      <!-- Excel Projects Section-->
+      <div class = "excel-projects hidden">
+        <div class = "excel-project-card">
+          <a href = "https://github.com/lindsaywhipple/lindsaywhipple.github.io" target = "_blank">
+            <img src = "images/project5.jpg" alt = "Excel" />
+            <div class = "excel-overlay">
+              <h4> Coming Soon!</h4>
+              <p> Excel experience coming soon!</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    <!-- HTML Projects -->
+        <div class = "html-projects hidden">
+          <div class = "html-project-card">
+            <a href = "https://github.com/lindsaywhipple/lindsaywhipple.github.io" target = "_blank">
+              <img src = "images/project3.jpg" alt = "Data Analytics Portfolio" />
+              <div class = "html-overlay">
+                <h4> Data Analytics Portfolio - 2025</h4>
+                <p> View the HTML code I created for this project!</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+    <!-- CSS Projects -->
+        <div class = "css-projects hidden">
+          <div class = "css-project-card">
+            <a href = "https://github.com/lindsaywhipple/lindsaywhipple.github.io" target = "_blank">
+              <img src = "images/project4.jpg" alt = "Data Analytics Portfolio" />
+              <div class = "css-overlay">
+                <h4> Data Analytics Portfolio - 2025</h4>
+                <p> View the CSS code I created to style this project!</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+    
 
 
     <!-- Techniques section -->
@@ -131,17 +187,55 @@
   </footer>
 
   <script>
-    // Toggle buttons and sections
+    // Tab buttons and sections
     const languagesBtn = document.getElementById('languagesBtn');
     const techniquesBtn = document.getElementById('techniquesBtn');
     const languagesSection = document.getElementById('languages');
     const techniquesSection = document.getElementById('techniques');
   
-    // Toggleable project sections
-    const pythonToggle = document.querySelector('.python-toggle');
-    const pythonProjects = document.querySelector('.python-projects');
-    const rToggle = document.querySelector('.r-toggle');
-    const rProjects = document.querySelectorAll('.r-projects')[1]; // 2nd one is for R
+    // Toggles and projects
+    const toggles = {
+      python: {
+        toggle: document.querySelector('.python-toggle'),
+        section: document.querySelector('.python-projects')
+      },
+      r: {
+        toggle: document.querySelector('.r-toggle'),
+        section: document.querySelectorAll('.r-projects')[1] // Second R section
+      },
+      html: {
+        toggle: document.querySelector('.html-toggle'),
+        section: document.querySelector('.html-projects')
+      },
+      css: {
+        toggle: document.querySelector('.css-toggle'),
+        section: document.querySelector('.css-projects')
+      },
+      sql: {
+        toggle: document.querySelector('.sql-toggle'),
+        section: document.querySelector('.sql-projects')
+      },
+      tableau: {
+        toggle: document.querySelector('.tableau-toggle'),
+        section: document.querySelector('.tableau-projects')
+      },
+      powerbi: {
+        toggle: document.querySelector('.powerbi-toggle'),
+        section: document.querySelector('.powerbi-projects')
+      },
+      excel: {
+        toggle: document.querySelector('.excel-toggle'),
+        section: document.querySelector('.excel-projects')
+      }
+    };
+  
+    // Helper to close all
+    function closeAllProjects() {
+      Object.values(toggles).forEach(({ toggle, section }) => {
+        if (section) section.classList.add('hidden');
+        if (toggle) toggle.classList.remove('open');
+      });
+    }
   
     // Handle tab switching
     function switchTab(activeBtn, inactiveBtn, showSection, hideSection) {
@@ -149,12 +243,7 @@
       inactiveBtn.classList.remove('active');
       showSection.classList.add('active');
       hideSection.classList.remove('active');
-  
-      // Hide Python and R projects when switching tabs
-      pythonProjects.classList.add('hidden');
-      rProjects.classList.add('hidden');
-      pythonToggle.classList.remove('open');
-      rToggle.classList.remove('open');
+      closeAllProjects();
     }
   
     languagesBtn.addEventListener('click', () => {
@@ -165,32 +254,21 @@
       switchTab(techniquesBtn, languagesBtn, techniquesSection, languagesSection);
     });
   
-    // Python toggle logic
-    pythonToggle.addEventListener('click', () => {
-      const isHidden = pythonProjects.classList.contains('hidden');
-      pythonProjects.classList.toggle('hidden');
-      pythonToggle.classList.toggle('open');
-  
-      // Hide R if Python is opening
-      if (isHidden) {
-        rProjects.classList.add('hidden');
-        rToggle.classList.remove('open');
-      }
-    });
-  
-    // R toggle logic
-    rToggle.addEventListener('click', () => {
-      const isHidden = rProjects.classList.contains('hidden');
-      rProjects.classList.toggle('hidden');
-      rToggle.classList.toggle('open');
-  
-      // Hide Python if R is opening
-      if (isHidden) {
-        pythonProjects.classList.add('hidden');
-        pythonToggle.classList.remove('open');
+    // Attach toggle logic for each skill
+    Object.entries(toggles).forEach(([key, { toggle, section }]) => {
+      if (toggle && section) {
+        toggle.addEventListener('click', () => {
+          const isHidden = section.classList.contains('hidden');
+          closeAllProjects();
+          if (isHidden) {
+            section.classList.remove('hidden');
+            toggle.classList.add('open');
+          }
+        });
       }
     });
   </script>
+  
 
 </body>
 </html>
