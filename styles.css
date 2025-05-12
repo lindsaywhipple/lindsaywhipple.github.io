@@ -164,6 +164,15 @@ body {
     color: #a9746e;
     transform: translateY(-3px);
   }
+
+  .skill-project-wrapper {
+    display: none;
+    margin-top: 20px;
+  }
+  
+  .skill-project-wrapper.visible {
+    display: block;
+  }
   
   /* ============================ */
   /* Project Card Styles         */
