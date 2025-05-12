@@ -23,7 +23,8 @@
   </header>
 
   <main>
-    <h2>Skills</h2>
+    <h2>Tehcnical Skills</h2>
+    <p>Select a skill below to view my projects!</p>
 
     <div class="skills-toggle">
       <button id="languagesBtn" class="active">Languages</button>
@@ -33,27 +34,40 @@
     <div id="languages" class="skills-category active">
       <div class="skills-wrapper">
         <div class="skill-item python-toggle"><i class="fab fa-python"></i> Python</div>
-        <div class="skill-item"><i class="fas fa-database"></i> SQL</div>
+        <div class="skill-item sql-toggle"><i class="fas fa-database"></i> SQL</div>
         <div class="skill-item r-toggle"><i class="fab fa-r-project"></i> R</div>
-        <div class="skill-item"><i class="fas fa-chart-bar"></i> Tableau</div>
-        <div class="skill-item"><i class="fas fa-chart-pie"></i> Power BI</div>
-        <div class="skill-item"><i class="fas fa-file-excel"></i> Excel</div>
+        <div class="skill-item tableau-toggle"><i class="fas fa-chart-bar"></i> Tableau</div>
+        <div class="skill-item powerbi-toggle"><i class="fas fa-chart-pie"></i> Power BI</div>
+        <div class="skill-item excel-toggle"><i class="fas fa-file-excel"></i> Excel</div>
       </div>
-    
-      <!-- Python projects section (initially hidden) -->
-      <div class="r-projects hidden python-projects">
-        <div class="r-project-card">
+<!-- SKILLS/ PROJECTS SECTION-->    
+      <!-- Python Projects -->
+      <div class="python-projects hidden">
+        <div class="python-project-card">
           <a href="https://github.com/lindsaywhipple/FitnessTracker/tree/main" target="_blank">
             <img src="images/lift.jpg" alt="Lifting Tracker" />
-            <div class="r-overlay">
+            <div class="python-overlay">
               <h4>Lifting Tracker - 2025</h4>
               <p>Created a program in Python that allows users to track their lifts.</p>
             </div>
           </a>
         </div>
       </div>
+
+      <!-- SQL Projects-->
+      <div class="sql-projects hidden">
+        <div class = "sql-project-card">
+          <a href="https://github.com/lindsaywhipple/lindsaywhipple.github.io/tree/main" target="_blank">
+            <img src="images/project3.jpg" alt="SQL Projects" />
+            <div class="sql-overlay">
+              <h4> Coming Soon!</h4>
+              <p> SQL projects coming soon!</p>
+            </div>
+          </a>
+        </div>
+      </div>
     
-      <!-- R projects section (initially hidden) -->
+      <!-- R Projects -->
       <div class="r-projects hidden">
         <div class="r-project-card">
           <a href="https://rpubs.com/LindsayWhipple/dcathletescouting" target="_blank">
@@ -84,6 +98,46 @@
         </div>
       </div>
     </div>
+
+    <!-- Tableau Projects -->
+    <div class="tableau-projects hidden">
+      <div class="tableau-project-card">
+        <a href="https://github.com/lindsaywhipple/lindsaywhipple.github.io/tree/main" target="_blank">
+          <img src="images/project2.jpg" alt = "Tableau" />
+          <div class="tableau-overlay">
+            <h4>Coming Soon!</h4>
+            <p> Tableau projects coming soon!</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Power BI Projects -->
+    <div class="powerbi-projects hidden">
+      <div class="powerbi-project-card">
+        <a href="https://github.com/lindsaywhipple/lindsaywhipple.github.io/tree/main" target="_blank">
+          <img src="images/project3.jpg" alt = "Power BI" />
+          <div class="powerbi-overlay">
+            <h4>Coming Soon!</h4>
+            <p>Power BI projects coming soon!</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Excel Projects -->
+    <div class="excel-projects hidden">
+      <div class="excel-project-card">
+        <a href="https://github.com/lindsaywhipple/lindsaywhipple.github.io/tree/main" target="_blank">
+          <img src="images/project4.jpg" alt = "Excel" />
+          <div class="excel-overlay">
+            <h4>Coming Soon!</h4>
+            <p>Excel projects coming soon!</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
     
     <!-- Techniques section -->
     <div id="techniques" class="skills-category">
@@ -102,30 +156,21 @@
   </footer>
 
   <script>
-    // Toggle buttons and sections
+    // === Toggle main tabs (Languages vs Techniques) ===
     const languagesBtn = document.getElementById('languagesBtn');
     const techniquesBtn = document.getElementById('techniquesBtn');
     const languagesSection = document.getElementById('languages');
-    const techniquesSection = document.getElementById('techniques');
+    const techniquesSection = document.getElementById('techniques'); // Make sure this exists!
   
-    // Toggleable project sections
-    const pythonToggle = document.querySelector('.python-toggle');
-    const pythonProjects = document.querySelector('.python-projects');
-    const rToggle = document.querySelector('.r-toggle');
-    const rProjects = document.querySelectorAll('.r-projects')[1]; // 2nd one is for R
-  
-    // Handle tab switching
     function switchTab(activeBtn, inactiveBtn, showSection, hideSection) {
       activeBtn.classList.add('active');
       inactiveBtn.classList.remove('active');
       showSection.classList.add('active');
       hideSection.classList.remove('active');
   
-      // Hide Python and R projects when switching tabs
-      pythonProjects.classList.add('hidden');
-      rProjects.classList.add('hidden');
-      pythonToggle.classList.remove('open');
-      rToggle.classList.remove('open');
+      // Hide all open project sections when switching tabs
+      document.querySelectorAll('.skills-wrapper .skill-item').forEach(btn => btn.classList.remove('open'));
+      document.querySelectorAll('[class$="-projects"]').forEach(section => section.classList.add('hidden'));
     }
   
     languagesBtn.addEventListener('click', () => {
@@ -136,32 +181,30 @@
       switchTab(techniquesBtn, languagesBtn, techniquesSection, languagesSection);
     });
   
-    // Python toggle logic
-    pythonToggle.addEventListener('click', () => {
-      const isHidden = pythonProjects.classList.contains('hidden');
-      pythonProjects.classList.toggle('hidden');
-      pythonToggle.classList.toggle('open');
+    // === Handle language toggle clicks (dynamic) ===
+    const skillButtons = document.querySelectorAll('.skills-wrapper .skill-item');
   
-      // Hide R if Python is opening
-      if (isHidden) {
-        rProjects.classList.add('hidden');
-        rToggle.classList.remove('open');
-      }
-    });
+    skillButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const baseClass = button.classList[1].replace('-toggle', ''); // e.g., 'python'
+        const section = document.querySelector(`.${baseClass}-projects`);
   
-    // R toggle logic
-    rToggle.addEventListener('click', () => {
-      const isHidden = rProjects.classList.contains('hidden');
-      rProjects.classList.toggle('hidden');
-      rToggle.classList.toggle('open');
+        // Hide all other sections
+        document.querySelectorAll('[class$=\"-projects\"]').forEach(s => s.classList.add('hidden'));
+        skillButtons.forEach(b => b.classList.remove('open'));
   
-      // Hide Python if R is opening
-      if (isHidden) {
-        pythonProjects.classList.add('hidden');
-        pythonToggle.classList.remove('open');
-      }
+        // Toggle current
+        if (section.classList.contains('hidden')) {
+          section.classList.remove('hidden');
+          button.classList.add('open');
+        } else {
+          section.classList.add('hidden');
+          button.classList.remove('open');
+        }
+      });
     });
   </script>
+  
 
 </body>
 </html>
