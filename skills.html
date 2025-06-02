@@ -190,45 +190,48 @@
 <!-- Techniques Section -->
 <div id="techniques" class="skills-category">
   <div class="skills-wrapper">
+    <div class="skill-item data-cleaning-toggle"><i class="fas fa-broom"></i> Data Cleaning</div>
+    <div class="skill-item visualization-toggle"><i class="fas fa-chart-line"></i> Visualization</div>
     <div class="skill-item"><i class="fas fa-vial"></i> A/B Testing</div>
-    <div class="skill-item"><i class="fas fa-broom"></i> Data Cleaning</div>
-    <div class="skill-item"><i class="fas fa-chart-line"></i> Visualization</div>
     <div class="skill-item"><i class="fas fa-square-root-alt"></i> Statistical Modeling</div>
   </div>
-  <!-- A/B Testing-->
-  <!-- Data Cleaning -->
-  <div class="project-card">
-    <a href="https://lindsaywhipple.shinyapps.io/PSA-Tracker/" target="_blank">
-      <img src="images/psa.jpg" alt="PSA Squash Tracker" />
-      <div class="overlay">
-        <div class="overlay-text">
-          <h3>Updated PSA Shiny App - 2025</h3>
-          <p>
-            Built a dynamic R Shiny dashboard to explore squash player rankings and historical performance.<br>
-            <a href="https://github.com/lindsaywhipple/PSA-Squash-Tracker" target="_blank">See code →</a>
-          </p>
+
+  <!-- Data Cleaning Projects -->
+  <div class="data-cleaning-projects hidden">
+    <div class="project-card">
+      <a href="https://lindsaywhipple.shinyapps.io/PSA-Tracker/" target="_blank">
+        <img src="images/psa.jpg" alt="PSA Squash Tracker" />
+        <div class="overlay">
+          <div class="overlay-text">
+            <h3>Updated PSA Shiny App - 2025</h3>
+            <p>
+              Built a dynamic R Shiny dashboard to explore squash player rankings and historical performance.<br>
+              <a href="https://github.com/lindsaywhipple/PSA-Squash-Tracker" target="_blank">See code →</a>
+            </p>
+          </div>
         </div>
-      </div>
-    </a>
+      </a>
+    </div>
   </div>
 
-  <!-- Visualization -->
-  <div class="project-card">
-    <a href="https://lindsaywhipple.shinyapps.io/PSA-Tracker/" target="_blank">
-      <img src="images/psa.jpg" alt="PSA Squash Tracker" />
-      <div class="overlay">
-        <div class="overlay-text">
-          <h3>Updated PSA Shiny App - 2025</h3>
-          <p>
-            Built a dynamic R Shiny dashboard to explore squash player rankings and historical performance.<br>
-            <a href="https://github.com/lindsaywhipple/PSA-Squash-Tracker" target="_blank">See code →</a>
-          </p>
+  <!-- Visualization Projects -->
+  <div class="visualization-projects hidden">
+    <div class="project-card">
+      <a href="https://lindsaywhipple.shinyapps.io/PSA-Tracker/" target="_blank">
+        <img src="images/psa.jpg" alt="PSA Squash Tracker" />
+        <div class="overlay">
+          <div class="overlay-text">
+            <h3>Updated PSA Shiny App - 2025</h3>
+            <p>
+              Built a dynamic R Shiny dashboard to explore squash player rankings and historical performance.<br>
+              <a href="https://github.com/lindsaywhipple/PSA-Squash-Tracker" target="_blank">See code →</a>
+            </p>
+          </div>
         </div>
-      </div>
-    </a>
+      </a>
+    </div>
   </div>
 </div>
-<!-- Statistical Modeling -->
     
   </main>
 
@@ -286,7 +289,31 @@
       });
     });
   </script>
+
+<script>
+  // === Techniques Toggle (similar to Language toggle) ===
+  const techniqueButtons = document.querySelectorAll('#techniques .skill-item');
   
+  techniqueButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const baseClass = button.classList[0].replace('-toggle', '');
+      const section = document.querySelector(`.${baseClass}-projects`);
+
+      // Hide all other technique project sections
+      document.querySelectorAll('#techniques [class$="-projects"]').forEach(s => s.classList.add('hidden'));
+      techniqueButtons.forEach(b => b.classList.remove('open'));
+
+      // Toggle the selected one
+      if (section && section.classList.contains('hidden')) {
+        section.classList.remove('hidden');
+        button.classList.add('open');
+      } else if (section) {
+        section.classList.add('hidden');
+        button.classList.remove('open');
+      }
+    });
+  });
+</script>  
 
 </body>
 </html>
