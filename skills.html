@@ -291,12 +291,13 @@
   </script>
 
 <script>
-  // === Techniques Toggle (similar to Language toggle) ===
+  // === Techniques Toggle ===
   const techniqueButtons = document.querySelectorAll('#techniques .skill-item');
   
   techniqueButtons.forEach(button => {
     button.addEventListener('click', () => {
-      const baseClass = button.classList[0].replace('-toggle', '');
+      const toggleClass = Array.from(button.classList).find(cls => cls.endsWith('-toggle'));
+      const baseClass = toggleClass ? toggleClass.replace('-toggle', '') : null;
       const section = document.querySelector(`.${baseClass}-projects`);
 
       // Hide all other technique project sections
@@ -313,7 +314,7 @@
       }
     });
   });
-</script>  
+</script>
 
 </body>
 </html>
