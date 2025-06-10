@@ -517,6 +517,42 @@ nav ul li a:hover {
     background-color: #8a5c54;
 }
 
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+  
+  .certificate-card {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  
+  .certificate-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .certificate-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .certificate-card h3 {
+    margin-top: 0.75rem;
+    font-size: 1.1rem;
+  }
+  
+  .certificate-card p {
+    font-size: 0.95rem;
+    color: #555;
+  }
+
 
 /* ============================= */
 /* === SKILLS SECTION         === */
