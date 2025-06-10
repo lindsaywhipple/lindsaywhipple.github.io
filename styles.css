@@ -535,8 +535,8 @@ nav ul li a:hover {
     transition: transform 0.3s ease;
   }
   
-  .certificate-card:hover {
-    transform: scale(1.03);
+  .certificate-card:hover .overlay {
+    opacity: 1;
   }
   
   .certificate-card img {
