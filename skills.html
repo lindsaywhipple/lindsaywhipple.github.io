@@ -46,21 +46,6 @@
  
       <!-- Python Projects -->
       <div class="python-projects hidden">
-        <div class="project-card">
-          <a href="https://public.tableau.com/app/profile/lindsay.whipple/viz/USHealthcareDatabreachVisualizations/Dashboard2" target="_blank">
-            <img src="images/databreach.avif" alt="US Healthcare Data Breach Visualizations" />
-            <div class="overlay">
-              <div class="overlay-text">
-                <h3>US Healthcare Data Breach Visualizations - 2025</h3>
-                  <p>
-                    Utilized Tableau and Python to analyze trends for US healthcare data breaches. <br>
-                    <a href="https://github.com/lindsaywhipple/DataBreaches" target="_blank">See code →</a>
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-
         <div class="python-project-card">
           <a href="https://github.com/lindsaywhipple/FitnessTracker/tree/main" target="_blank">
             <img src="images/lift.jpg" alt="Lifting Tracker" />
@@ -162,20 +147,16 @@
 
     <!-- Tableau Projects -->
     <div class="tableau-projects hidden">
-      <div class="project-card">
-        <a href="https://public.tableau.com/app/profile/lindsay.whipple/viz/USHealthcareDatabreachVisualizations/Dashboard2" target="_blank">
-          <img src="images/databreach.avif" alt="US Healthcare Data Breach Visualizations" />
-          <div class="overlay">
-            <div class="overlay-text">
-              <h3>US Healthcare Data Breach Visualizations - 2025</h3>
-                <p>
-                  Utilized Tableau and Python to analyze trends for US healthcare data breaches. <br>
-                  <a href="https://github.com/lindsaywhipple/DataBreaches" target="_blank">See code →</a>
-                </p>
-              </div>
-            </div>
-          </a>
-        </div>
+      <div class="tableau-project-card">
+        <a href="https://github.com/lindsaywhipple/lindsaywhipple.github.io/tree/main" target="_blank">
+          <img src="images/project2.jpg" alt = "Tableau" />
+          <div class="tableau-overlay">
+            <h4>Coming Soon!</h4>
+            <p> Tableau projects coming soon!</p>
+          </div>
+        </a>
+      </div>
+    </div>
 
     <!-- Power BI Projects -->
     <div class="powerbi-projects hidden">
@@ -281,21 +262,6 @@
       <!-- Visualization -->
       <div class="visualization-projects hidden">
         <div class="project-card">
-          <a href="https://public.tableau.com/app/profile/lindsay.whipple/viz/USHealthcareDatabreachVisualizations/Dashboard2" target="_blank">
-            <img src="images/databreach.avif" alt="US Healthcare Data Breach Visualizations" />
-            <div class="overlay">
-              <div class="overlay-text">
-                <h3>US Healthcare Data Breach Visualizations - 2025</h3>
-                  <p>
-                    Utilized Tableau and Python to analyze trends for US healthcare data breaches. <br>
-                    <a href="https://github.com/lindsaywhipple/DataBreaches" target="_blank">See code →</a>
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-        
-        <div class="project-card">
           <a href="https://lindsaywhipple.shinyapps.io/PSA-Tracker/" target="_blank">
             <img src="images/squashchart.png" alt="PSA Squash Tracker" />
             <div class="overlay">
@@ -379,12 +345,8 @@
       inactiveBtn.classList.remove('active');
       showSection.classList.add('active');
       hideSection.classList.remove('active');
-
-      // Reset open buttons and project displays in both sections
-      document.querySelectorAll('.skills-category').forEach(wrapper => {
-        wrapper.querySelectorAll('.skill-item').forEach(btn => btn.classList.remove('open'));
-        wrapper.querySelectorAll('[class$="-projects"]').forEach(sec => sec.classList.add('hidden'));
-      });
+      document.querySelectorAll('.skills-wrapper .skill-item').forEach(btn => btn.classList.remove('open'));
+      document.querySelectorAll('[class$="-projects"]').forEach(section => section.classList.add('hidden'));
     }
 
     languagesBtn.addEventListener('click', () => {
@@ -395,27 +357,23 @@
       switchTab(techniquesBtn, languagesBtn, techniquesSection, languagesSection);
     });
 
-    // Function to bind click events to skill items in each section
-    document.querySelectorAll('.skills-category').forEach(wrapper => {
-      const buttons = wrapper.querySelectorAll('.skill-item');
+    const skillButtons = document.querySelectorAll('.skills-wrapper .skill-item');
 
-      buttons.forEach(button => {
-        button.addEventListener('click', () => {
-          const baseClass = button.classList[1].replace('-toggle', '');
-          const section = wrapper.querySelector(`.${baseClass}-projects`);
+    skillButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const baseClass = button.classList[1].replace('-toggle', '');
+        const section = document.querySelector(`.${baseClass}-projects`);
 
-          // Hide all other project sections in this wrapper
-          wrapper.querySelectorAll('[class$="-projects"]').forEach(s => s.classList.add('hidden'));
-          buttons.forEach(b => b.classList.remove('open'));
+        document.querySelectorAll('[class$="-projects"]').forEach(s => s.classList.add('hidden'));
+        skillButtons.forEach(b => b.classList.remove('open'));
 
-          if (section.classList.contains('hidden')) {
-            section.classList.remove('hidden');
-            button.classList.add('open');
-          } else {
-            section.classList.add('hidden');
-            button.classList.remove('open');
-          }
-        });
+        if (section.classList.contains('hidden')) {
+          section.classList.remove('hidden');
+          button.classList.add('open');
+        } else {
+          section.classList.add('hidden');
+          button.classList.remove('open');
+        }
       });
     });
   </script>
