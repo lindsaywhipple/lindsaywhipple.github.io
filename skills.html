@@ -379,8 +379,12 @@
       inactiveBtn.classList.remove('active');
       showSection.classList.add('active');
       hideSection.classList.remove('active');
-      document.querySelectorAll('.skills-wrapper .skill-item').forEach(btn => btn.classList.remove('open'));
-      document.querySelectorAll('[class$="-projects"]').forEach(section => section.classList.add('hidden'));
+
+      // Reset open buttons and project displays in both sections
+      document.querySelectorAll('.skills-category').forEach(wrapper => {
+        wrapper.querySelectorAll('.skill-item').forEach(btn => btn.classList.remove('open'));
+        wrapper.querySelectorAll('[class$="-projects"]').forEach(sec => sec.classList.add('hidden'));
+      });
     }
 
     languagesBtn.addEventListener('click', () => {
@@ -391,23 +395,27 @@
       switchTab(techniquesBtn, languagesBtn, techniquesSection, languagesSection);
     });
 
-    const skillButtons = document.querySelectorAll('.skills-wrapper .skill-item');
+    // Function to bind click events to skill items in each section
+    document.querySelectorAll('.skills-category').forEach(wrapper => {
+      const buttons = wrapper.querySelectorAll('.skill-item');
 
-    skillButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const baseClass = button.classList[1].replace('-toggle', '');
-        const section = document.querySelector(`.${baseClass}-projects`);
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const baseClass = button.classList[1].replace('-toggle', '');
+          const section = wrapper.querySelector(`.${baseClass}-projects`);
 
-        document.querySelectorAll('[class$="-projects"]').forEach(s => s.classList.add('hidden'));
-        skillButtons.forEach(b => b.classList.remove('open'));
+          // Hide all other project sections in this wrapper
+          wrapper.querySelectorAll('[class$="-projects"]').forEach(s => s.classList.add('hidden'));
+          buttons.forEach(b => b.classList.remove('open'));
 
-        if (section.classList.contains('hidden')) {
-          section.classList.remove('hidden');
-          button.classList.add('open');
-        } else {
-          section.classList.add('hidden');
-          button.classList.remove('open');
-        }
+          if (section.classList.contains('hidden')) {
+            section.classList.remove('hidden');
+            button.classList.add('open');
+          } else {
+            section.classList.add('hidden');
+            button.classList.remove('open');
+          }
+        });
       });
     });
   </script>
